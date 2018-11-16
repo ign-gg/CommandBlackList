@@ -1,0 +1,17 @@
+*.class
+# Log file
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+.settings
+.classpath
+.project
+.DS_Store
+target/
