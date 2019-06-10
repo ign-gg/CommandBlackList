@@ -8,11 +8,9 @@ import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.TextFormat;
 
-import java.util.List;
-
 public class CommandBlackList extends PluginBase implements Listener {
 
-    Config c;
+    private Config c;
 
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
@@ -22,14 +20,17 @@ public class CommandBlackList extends PluginBase implements Listener {
 
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent e) {
-        List<String> cmds = c.getStringList("commands");
-        if (cmds.contains(e.getMessage().toLowerCase()) && !e.getPlayer().isOp()) {
-            e.setCancelled(true);
-            sendMessage(e.getPlayer());
+        String cmd = e.getMessage().toLowerCase().replaceAll("\\s+","");
+        for (String str : c.getStringList("commands")) {
+            if (cmd.startsWith(str) && !e.getPlayer().hasPermission("commandblacklist.ignore")) {
+                e.setCancelled(true);
+                sendMessage(e.getPlayer());
+                return;
+            }
         }
     }
 
-    public void sendMessage(Player p) {
+    private void sendMessage(Player p) {
         p.sendMessage(TextFormat.colorize('&', c.getString("message")));
     }
 }

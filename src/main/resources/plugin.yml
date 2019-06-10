@@ -1,5 +1,10 @@
 name: CommandBlackList
 main: cbl.CommandBlackList
-version: "1.0"
+version: "${pom.version}"
 api: ["1.0.0"]
 author: PetteriM1
+
+permissions:
+  commandblacklist.ignore:
+    description: "Allows player to use blocked commands"
+    default: op
