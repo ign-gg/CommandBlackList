@@ -1,5 +1,4 @@
 *.class
-# Log file
 *.log
 *.ctxt
 .mtj.tmp/
@@ -17,4 +16,3 @@ hs_err_pid*
 target/
 .idea
 *.iml
-.DS_Store

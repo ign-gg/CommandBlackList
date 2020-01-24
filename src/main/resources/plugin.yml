@@ -1,7 +1,7 @@
 name: CommandBlackList
 main: cbl.CommandBlackList
 version: "${pom.version}"
-api: ["1.0.0"]
+api: ["2.0.0"]
 author: PetteriM1
 
 permissions:
